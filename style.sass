@@ -1,0 +1,81 @@
+@mixin flex($align-items , $justify-content)
+	display: flex
+	align-items: $align-items
+	justify-content: $justify-content
+
+body
+	min-height: 100vh
+  overflow: hidden
+	@include flex(center,center)
+
+
+		
+#frame
+	perspective: 1500px
+	@include flex(center,center)
+	.outer
+		height: 500px
+		width: 500px
+		background: transparent
+		position: absolute
+		
+
+		
+		
+@for $i from 1 through 	80 
+	.outer-#{$i}
+		box-shadow: inset 0 0 100px hsl(240,30,16)
+		transform: rotateZ(0deg) translateZ( -95px * $i)
+		opacity: 0
+		animation: fade-in 20s linear -10 / $i * 50 +s infinite 
+		@keyframes fade-in
+			95%,0%,100%
+				transform: rotateZ(-5deg) translateZ( -120px * $i) scale(.8,.8)
+				opacity: 0
+				border-radius: 10px
+			10%
+				opacity: 1
+			94.5%
+				transform: rotateZ(235deg) translateZ($i * 150px) scale(1.4,1.5)
+				border-radius: 10px
+		
+		@-webkit-animation: fade-in 20s linear -10 / $i * 50 +s infinite 
+		@-webkit-keyframes fade-in
+			95%,0%,100%
+				-webkit-transform: rotateZ(5deg) translateZ( -150px * $i) scale(.8,.8)
+				opacity: 0
+				border-radius: 10px
+			10%
+				opacity: 1
+			94.5%
+				-webkit-transform: rotateZ(230deg) translateZ($i * 150px) scale(1.4,1.5)
+				border-radius: 10px
+	
+		@-moz-animation: fade-in 20s linear -10 / $i * 50 +s infinite 
+		@-moz-keyframes fade-in
+			95%,0%,100%
+				-moz-transform: rotateZ(-5deg) translateZ( -150px * $i) scale(.8,.8)
+				opacity: 0
+				border-radius: 10px
+			10%
+				opacity: 1
+			94.5%
+				-moz-transform: rotateZ(230deg) translateZ($i * 150px) scale(1.4,1.5)	
+				border-radius: 10px
+			
+		@-o-animation: fade-in 20s linear -10 / $i * 50 +s infinite 
+		@-o-keyframes fade-in
+			95%,0%,100%
+				-o-transform: rotateZ(5deg) translateZ( -120px * $i) scale(.8,.8)
+				opacity: 0
+				border-radius: 10px
+			10%
+				opacity: 1
+			94.5%
+				-o-transform: rotateZ(230deg) translateZ($i * 150px) scale(1.4,1.5)	
+				border-radius: 10px
+		
+			
+		
+		
+
